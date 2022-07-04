@@ -1,22 +1,20 @@
 #!/usr/bin/python3
-BaseGeometry = __import__('7-base_geometry').BaseGeometry
+class BaseGeometry:
+    """ Class that defines the attributes of Geometric Shapes """
 
-bg = BaseGeometry()
+    def area(self):
+        """ Method that defines the area of a geomtric shape """
 
-bg.integer_validator("my_int", 12)
-bg.integer_validator("width", 89)
+        raise Exception("area() is not implemented")
 
-try:
-    bg.integer_validator("name", "John")
-except Exception as e:
-    print("[{}] {}".format(e.__class__.__name__, e))
+    def integer_validator(self, name, value):
+        """ Method that recieves the value property
+        Árgs:
+            name: name of the object
+            value: value of the property
+        """
 
-try:
-    bg.integer_validator("age", 0)
-except Exception as e:
-    print("[{}] {}".format(e.__class__.__name__, e))
-
-try:
-    bg.integer_validator("distance", -4)
-except Exception as e:
-    print("[{}] {}".format(e.__class__.__name__, e))
+        if type(value) is not int:
+            raise TypeError("{} must be an integer".format(name))
+        if value <= 0:
+            raise ValueError("{} must be greater than 0".format(name))
